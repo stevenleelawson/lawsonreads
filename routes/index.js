@@ -106,7 +106,7 @@ router.get('/author/:id/detail', function(req, res, next){
   knex('author').select().where({
     id: req.params.id
   }).then(function(data){
-    res.render('detail', {item:data});
+    res.render('detailauthor', {item:data});
   });
 });
 module.exports = router;
