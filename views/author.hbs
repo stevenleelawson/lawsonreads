@@ -11,12 +11,12 @@
         <li>
           {{this.biography}}
 
-          <a href="/{{this.id}}/detail"><img src="{{this.portrait_url}}"></a>
-          <a href="/{{this.id}}/delete"><button type="submit" name="button">Delete</button></a>
-          <a href="/{{this.id}}/edit"><button type="submit">Edit</button></a>
+          <a href="/author/{{this.id}}/detail"><img src="{{this.portrait_url}}"></a>
+          <a href="/author/{{this.id}}/delete"><button type="submit" name="button">Delete</button></a>
+          <a href="/author/{{this.id}}/edit"><button type="submit">Edit</button></a>
         </li>
     </ul>
     {{/each}}
   </section>
 </div>
-<a href="/add">Add An Author</a>
+<a href="/author/add">Add An Author</a>

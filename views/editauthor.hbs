@@ -1,0 +1,15 @@
+<h1>Edit an Author</h1>
+{{#each item}}
+  {{this.first_name}}
+  {{this.last_name}}
+  <img src='{{this.portrait_url}}'/>
+{{/each}}
+{{#each item}}
+  <form class="" action="/author/{{this.id}}/edit" method="post">
+    <input type="text" name="first_name" value="" placeholder="First Name">
+    <input type="text" name="last_name" value="" placeholder="Last Name">
+    <input type="text" name="biography" placeholder="Biography">
+    <input type="text" name="portrait_url" placeholder="portrait url">
+    <button type="submit" >Edit</button>
+{{/each}}
+  </form>
