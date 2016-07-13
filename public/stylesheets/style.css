@@ -19,8 +19,13 @@ header {
 .heading {
   padding: 1.5rem; }
 
-img {
-  height: 10rem;
-  width: 10rem; }
+.landing {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 3rem; }
+  .landing img {
+    height: 10rem;
+    width: 10rem; }
 
 /*# sourceMappingURL=style.css.map */
