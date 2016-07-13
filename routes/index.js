@@ -56,12 +56,23 @@ router.get('/:id/detail', function(req, res, next){
 
 
 //begin author routes
+router.get('/addauthor', function(req, res, next){
+  res.render('addauthor');
+});
+router.post('/addauthor', function(req, res, next){
+  knex('author').insert(req.body).then(function(data){
+    res.redirect('/author');
+  }).catch(function (err){
+      next(err);
+  });
+});
 router.get('/author', function(req, res, next){
   knex('author').select().then(function(data){
     res.render('author', { title: 'Readz', list: data });
   });
 });
 router.post('/add', function(req, res, next){
+  console.log(req.body);
   knex('author').insert(req.body).then(function(data){
     res.redirect('/author');
   }).catch(function (err){
