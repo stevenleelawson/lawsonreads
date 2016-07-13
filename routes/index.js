@@ -18,7 +18,7 @@ router.get('/add', function(req, res, next){
 });
 router.post('/add', function(req, res, next){
   knex('book').insert(req.body).then(function(data){
-    res.redirect('/');
+    res.redirect('/book');
   }).catch(function (err){
       next(err);
   });
@@ -44,6 +44,13 @@ router.post('/:id/edit', function(req, res, next){
     id: req.params.id
   }).then(function(data){
     res.redirect('/book');
+  });
+});
+router.get('/:id/detail', function(req, res, next){
+  knex('book').select().where({
+    id: req.params.id
+  }).then(function(data){
+    res.render('detail', {item:data});
   });
 });
 module.exports = router;
