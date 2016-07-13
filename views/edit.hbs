@@ -1,1 +1,14 @@
-<h1>Delete a book</h1>
+<h1>Edit a book</h1>
+{{#each item}}
+  {{this.title}}
+  {{this.description}}
+  <img src='{{this.cover_url}}'/>
+{{/each}}
+{{#each item}}
+  <form class="" action="/{{this.id}}/edit" method="post">
+    <input type="text" name="title" value="" placeholder="Title">
+    <input type="text" name="description" placeholder="Description">
+    <input type="text" name="cover_url" placeholder="Cover">
+    <button type="submit" >Edit</button>
+{{/each}}
+  </form>

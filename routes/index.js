@@ -23,18 +23,27 @@ router.post('/add', function(req, res, next){
       next(err);
   });
 });
-// router.get('/:id/edit', function(req, res, next){
-//   knex('book').select().where({
-//     id: req.params.id
-//   }).then(function(data){
-//     res.render('edit', {item: data});
-//   });
-// });
+router.get('/:id/edit', function(req, res, next){
+  knex('book').select().where({
+    id: req.params.id
+  }).then(function(data){
+    res.render('edit', {item: data});
+  });
+});
+
 router.get('/:id/delete', function(req, res, next){
   knex('book').delete(req.body).where({
     id: req.params.id
   }).then(function(data){
     res.redirect('/');
+  });
+});
+router.post('/:id/edit', function(req, res, next){
+  knex('book').update(req.body)
+  .where({
+    id: req.params.id
+  }).then(function(data){
+    res.redirect('/book');
   });
 });
 module.exports = router;
