@@ -7,14 +7,14 @@ router.get('/', function(req, res, next) {
   res.render('index');
 
   });
+  router.get('/add', function(req, res, next){
+    res.render('add');
+  });
 
 router.get('/book', function(req, res, next){
   knex('book').select().then(function(data){
     res.render('book', { title: 'Readz', list: data });
   });
-});
-router.get('/add', function(req, res, next){
-  res.render('add');
 });
 router.post('/add', function(req, res, next){
   knex('book').insert(req.body).then(function(data){
@@ -48,6 +48,51 @@ router.post('/:id/edit', function(req, res, next){
 });
 router.get('/:id/detail', function(req, res, next){
   knex('book').select().where({
+    id: req.params.id
+  }).then(function(data){
+    res.render('detail', {item:data});
+  });
+});
+
+
+//begin author routes
+router.get('/author', function(req, res, next){
+  knex('author').select().then(function(data){
+    res.render('author', { title: 'Readz', list: data });
+  });
+});
+router.post('/add', function(req, res, next){
+  knex('author').insert(req.body).then(function(data){
+    res.redirect('/author');
+  }).catch(function (err){
+      next(err);
+  });
+});
+router.get('/:id/edit', function(req, res, next){
+  knex('author').select().where({
+    id: req.params.id
+  }).then(function(data){
+    res.render('edit', {item: data});
+  });
+});
+
+router.get('/:id/delete', function(req, res, next){
+  knex('author').delete(req.body).where({
+    id: req.params.id
+  }).then(function(data){
+    res.redirect('/');
+  });
+});
+router.post('/:id/edit', function(req, res, next){
+  knex('author').update(req.body)
+  .where({
+    id: req.params.id
+  }).then(function(data){
+    res.redirect('/author');
+  });
+});
+router.get('/:id/detail', function(req, res, next){
+  knex('author').select().where({
     id: req.params.id
   }).then(function(data){
     res.render('detail', {item:data});
