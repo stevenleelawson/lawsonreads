@@ -28,4 +28,21 @@ header {
     height: 20rem;
     width: 20rem; }
 
+img {
+  height: 10rem; }
+
+.book {
+  display: flex;
+  flex-direction: column; }
+
+.descript {
+  width: 40vw;
+  padding-left: 4rem;
+  padding-right: 4rem; }
+
+.bio {
+  width: 40vw;
+  padding-left: 4rem;
+  padding-right: 4rem; }
+
 /*# sourceMappingURL=style.css.map */
